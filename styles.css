@@ -1,3 +1,4 @@
+/* Global Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -6,6 +7,7 @@ body {
   color: #1c1e21;
 }
 
+/* Header Styles */
 header {
   background-color: #ffffff;
   padding: 1rem;
@@ -19,3 +21,98 @@ header h1 {
   margin: 0;
   color: #1877f2;
 }
+
+header button {
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+header button:hover {
+  background-color: #166fe5;
+}
+
+/* Channels and Active Users Styles */
+.channels, .Active.Users {
+  background-color: #ffffff;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.channels h2, .Active.Users h2 {
+  margin-top: 0;
+  color: #1c1e21;
+}
+
+.channels ul, .Active.Users ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.channels li, .Active.Users li {
+  margin-bottom: 0.5rem;
+}
+
+.channels a {
+  color: #1877f2;
+  text-decoration: none;
+}
+
+.channels a:hover {
+  text-decoration: underline;
+}
+
+/* Main Content Styles */
+main {
+  background-color: #ffffff;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+main h1 {
+  color: #1c1e21;
+}
+
+.forum-messages article {
+  border-bottom: 1px solid #e4e6eb;
+  padding: 1rem 0;
+}
+
+.forum-messages article:last-child {
+  border-bottom: none;
+}
+
+.post-content p {
+  margin: 0;
+}
+
+.type_message textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccd0d5;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.send-message button {
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.send-message button:hover {
+  background-color: #166fe5;
+}
+
