@@ -17,3 +17,14 @@ Viewport meta tag allows the responsive design to do the scaling instead of the 
 @media selector dynamically detects the size and orientation of the device and applies CSS rules to represent the structure of the HTML in a way that accommodates the change. 
 
 CSS Grid Notes:
+
+You create a grid by putting a display property with the value of 'grid' on the partent element. 
+
+CSS Flexbox Notes:
+
+You create a flexbox by putting a display property with the value of 'flex' on the parent element. 
+
+Debugging CSS Notes:
+
+If you open up your project on google chrome and hit 'inspect' you can go to the styles tab and see which pieces of css code are affecting which areas of your page. 
+
