@@ -29,7 +29,7 @@ A dedicated online forum designed for women who are currently pregnant. It offer
 For this deliverable I built out the structure of my application using HTML.
 - [x] **HTML** pages - Four HTML pages: a home page, talking page, notifications page, and about page.
 - [x] **Links** - All HTML pages contain navigation to each other, the login/create account buttons also links the user to the chat page.
-- [ ] **Text** - There is textual content throughout the entire startup, most importantly represented in the messages sent and recieved on the talk page, and the information on the about page.
-- [ ] **Images** - I will have a rotating image on the about page, powered by a third party service. It is currently held by a placeholder.
-- [ ] **DB/Login** - Input box and submit button for login. The messages sent and recieved as well as the notifications represent data pulled from the database.
-- [ ] **WebSocket** - The realtime communication will be taking place in both the message center on the talk page as well as the notifications on the updates page. 
+- [x] **Text** - There is textual content throughout the entire startup, most importantly represented in the messages sent and recieved on the talk page, and the information on the about page.
+- [x] **Images** - I will have a rotating image on the about page, powered by a third party service. It is currently held by a placeholder.
+- [x] **DB/Login** - Input box and submit button for login. The messages sent and recieved as well as the notifications represent data pulled from the database.
+- [x] **WebSocket** - The realtime communication will be taking place in both the message center on the talk page as well as the notifications on the updates page. 
