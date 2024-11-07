@@ -1,85 +1,43 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BumpTalk</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="bumptalk_icon.ico"/>
 </head>
 <body>
     <header>
         <h1>BumpTalk</h1>
-        <div>
-            <a href="login.html">
-                <button>Login</button>
-            </a>
-        </div>
-        <div>
-            <a href="signup.html">
-                <button>Sign Up</button>
-            </a>
-        </div>
-    </header>
-
-    <div class="channels">
-        <h2>Channels:</h2>
         <nav>
-        <ul>
-            <li>
-                <a href="Trimester1.html">Trimester 1 Talk</a>
-                <span>142 online</span>
-            </li>
-            <li>
-                <a href="Trimester2.html">Trimester 2 Talk</a>
-                <span>205 online</span>
-            </li>
-            <li>
-                <a href="Trimester3.html">Trimester 3 Talk</a>
-                <span>97 online</span>
-            </li>
-        </ul>
+            <menu> 
+                <li> <a href="index.html">Home</a></li>
+                <li> <a href="talk.html">Chat</a></li>
+                <li> <a href="updates.html">Notifications</a></li>
+                <li> <a href="about.html">About</a></li>
+            </menu>
         </nav>
-    </div>
-    <div class="Active Users">
-        <h2>Active Users:</h2>
-        <ul>
-            <li>User 1</li>
-            <li>User 2</li>
-            <li>User 3</li>
-            <li>User 4</li>
-            <li>User 5</li>
-        </ul>
-    </div>
+        <hr />
+    </header>
+    
     <main>
-        <h1>General</h1>
-        <div class="forum-messages">
-            <article>
-                <div class="post-content">
-                    <p>This is a message in forum</p>
-                </div>
-                <div class="post-indicator"></div>
-            </article>
-            <article>
-                <div class="post-content">
-                    <p>This is another message in forum</p>
-                </div>
-                <div class="post-indicator"></div>
-            </article>
-            <article>
-                <div class="post-content">
-                    <p>This is the last message in forum</p>
-                </div>
-                <div class="post-indicator"></div>
-            </article>
-        </div>
-        <div class="type-message">
-            <label for="messageinput"></label>
-            <textarea id="messageinput" rows="*" placeholder="Type your message here.."></textarea>
-        </div>
-        <div class="send-message">
-            <label for="messagesend"></label>
-            <button id="messagesend" type="button">Send</button>
-        </div>
+        <h1>Welcome to Bumptalk</h1>
+        <h3>Community for those expecting</h3>
+        <form method="get" action="talk.html">
+            <div>
+                <input type="text" placeholder="email">
+            </div>
+            <div>
+                <input type="text" placeholder="password">
+            </div>
+            <button type="submit">Login</button>
+            <button type="submit">Create Account</button>
+        </form>
+        <hr />
     </main>
     <footer>
-
+        <h3>Preston Miller</h3>
+        <br/>
+        <a href="https://github.com/Preston-Miller/mycs260startup.git">GitHub</a>
     </footer>
 </body>
 </html>
