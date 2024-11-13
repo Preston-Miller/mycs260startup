@@ -32,4 +32,13 @@ For this deliverable I built out the structure of my application using HTML.
 - [x] **Text** - There is textual content throughout the entire startup, most importantly represented in the messages sent and recieved on the talk page, and the information on the about page.
 - [x] **Images** - I will have a rotating image on the about page, powered by a third party service. It is currently held by a placeholder.
 - [x] **DB/Login** - Input box and submit button for login. The messages sent and recieved as well as the notifications represent data pulled from the database.
-- [x] **WebSocket** - The realtime communication will be taking place in both the message center on the talk page as well as the notifications on the updates page. 
+- [x] **WebSocket** - The realtime communication will be taking place in both the message center on the talk page as well as the notifications on the updates page.
+
+# CSS deliverable
+For this deliverable I properly styled the application into its final appearance.
+- [x] **Header, footer, and main content body.** 
+- [x] **Navigation Elements** - I made the underline appear when hovering, and changed the color for anchor elements.
+- [x] **Responsive to window resizing** - My app looks great on all window sizes and devices.
+- [x] **Application elements** - Used good contrast and white space.
+- [x] **Application text content** - Consistent fonts, text colors.
+- [x] **Application images** - I had a placeholder on my about page but replaced it with an actual image.
