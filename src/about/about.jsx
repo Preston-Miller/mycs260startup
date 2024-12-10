@@ -1,16 +1,24 @@
 import React from 'react';
 import './about.css';
 
-export function About() {
+export function About(props) {
+    const [quote, setQuote] = React.useState('Loading...');
+    const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
+
+    React.useEffect(() => {
+        setQuote('Show me the code');
+        setQuoteAuthor('Linus Torvalds');
+      }, []);
+      
   return (
     <main>
         <div className="picture-box">
             <img src="mother.avif" width ="100%" alt="random" />
         </div>
-        <div id="pregnancy-tip">
-            <h1>Tip of the Day</h1>
-            <p>Stay hydrated throughout your pregnancy! Drinking enough water supports amniotic fluid levels, 
-            helps nutrients circulate, and reduces swelling. - Dr. Suchandsuch</p>
+        <div id="quote" className="quote-box bg-light text-dark">
+            <h1>Quote of the Day</h1>
+            <p className="quote">Words are cheap. Show me the code.</p>
+            <p className="author">Linus Torvalds</p>
         </div>
         <div id="about-us">
             <h1>About Us</h1>
