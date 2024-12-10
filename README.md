@@ -42,3 +42,16 @@ For this deliverable I properly styled the application into its final appearance
 - [x] **Application elements** - Used good contrast and white space.
 - [x] **Application text content** - Consistent fonts, text colors.
 - [x] **Application images** - I had a placeholder on my about page but replaced it with an actual image.
+
+## React deliverable
+
+For this deliverable I used JavaScript and React so that the application completely works for a single user. I also added placeholders for future technology.
+
+- [x] **Bundled and transpiled**
+- [x] **Components** - Login, talk, updates, and about all components with mocks for login, WebSocket, and 3rd party services.
+  - [x] **login** - When you press the login button or create account it takes you to the talking page.
+  - [x] **database** - Displayed the messages sent, currently stored locally but will be replaced with the database data later. Register and login users.
+  - [x] **WebSocket** - I hardcoded some messages in talk, these will be replaced with WebSocket messages later.
+  - [x] **application logic** - Messages and updates are given ordered based upon time recieved.
+- [x] **Router** - Routing between all components. Specifically between login and talk.
+- [x] **Hooks** - I used UseState and UseEffect.
