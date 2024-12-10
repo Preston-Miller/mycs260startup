@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import './talk.css';
 
 export function Talk() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    { username: 'Angie', message: 'This is a message sent from angie' },
+    { username: 'Lizzy', message: 'This is a message sent from lizzy' },
+    { username: 'Becca', message: 'This is a message sent from becca' },
+  ]);
 
   const [newMessage, setNewMessage] = useState('');
 
