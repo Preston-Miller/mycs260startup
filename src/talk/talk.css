@@ -1,0 +1,66 @@
+
+h1 {
+    color: black;
+}
+.username-display {
+font-size: 1.2rem;
+margin-bottom: 1rem;
+}
+
+.username {
+font-weight: bold;
+color: #4169E1;
+}
+
+.recieved-messages {
+list-style-type: none;
+padding: 0;
+}
+
+.recieved-messages .username {
+font-weight: bold;
+color: #4a90e2;
+margin-top: 1rem;
+}
+
+.recieved-messages .message {
+background-color: #e6f2ff;
+padding: 0.5rem 1rem;
+border-radius: 1rem;
+margin-bottom: 0.5rem;
+display: inline-block;
+}
+
+.type-message textarea {
+width: 100%;
+height: 70px;
+padding: 0.5rem;
+border: 1px solid #ccc;
+border-radius: 0.5rem;
+resize: vertical;
+margin-top: .5rem;
+}
+
+.send-message {
+text-align: center;
+margin-top: .5rem;
+}
+
+.send-message button {
+background-color: #4169E1;
+color: #fff;
+border: none;
+padding: 0.5rem 2rem;
+border-radius: 0.5rem;
+cursor: pointer;
+font-size: 1rem;
+transition: background-color 0.3s ease;
+}
+
+.send-message button:hover {
+background-color: #3a7bc8;
+}
+
+.message {
+    color: black;
+}
