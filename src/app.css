@@ -4,6 +4,22 @@
   box-sizing: border-box;
   background-color: white;
 }
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #4169E1;
+    outline: none;
+    box-shadow: 0 0 5px rgba(65, 105, 225, 0.5);
+  }
   .body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
