@@ -43,7 +43,7 @@ For this deliverable I properly styled the application into its final appearance
 - [x] **Application text content** - Consistent fonts, text colors.
 - [x] **Application images** - I had a placeholder on my about page but replaced it with an actual image.
 
-## React deliverable
+# React deliverable
 
 For this deliverable I used JavaScript and React so that the application completely works for a single user. I also added placeholders for future technology.
 
