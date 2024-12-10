@@ -15,24 +15,34 @@ export default function App() {
             <h1>BumpTalk</h1>
             <nav>
                 <menu> 
-                    <li> <NavLink href="index.html">Home</NavLink></li>
-                    <li> <NavLink href="talk.html">Chat</NavLink></li>
-                    <li> <NavLink href="updates.html">Notifications</NavLink></li>
-                    <li> <NavLink href="about.html">About</NavLink></li>
+                    <li> <NavLink to=''>Login</NavLink></li>
+                    <li> <NavLink to='talk'>Talk</NavLink></li>
+                    <li> <NavLink to='updates'>Updates</NavLink></li>
+                    <li> <NavLink to='about'>About</NavLink></li>
                 </menu>
             </nav>
             <hr />
         </header>
 
-        <main>App components go here</main>
+        <Routes>
+            <Route path='/' element={<Login />} exact />
+            <Route path='/talk' element={<Talk />} />
+            <Route path='/updates' element={<Updates />} />
+            <Route path='/about' element={<About />} />
+            <Route path='*' element={<NotFound />} />
+        </Routes>
 
         <footer>
         <h3>Preston Miller</h3>
         <br/>
-        <NavLink href="https://github.com/Preston-Miller/mycs260startup.git">GitHub</NavLink>
+        <NavLink to="https://github.com/Preston-Miller/mycs260startup.git">GitHub</NavLink>
         </footer>
 
     </div>
     </BrowserRouter>
   );
 }
+
+function NotFound() {
+    return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
+  }
