@@ -15,10 +15,10 @@ export default function App() {
             <h1>BumpTalk</h1>
             <nav>
                 <menu> 
-                    <li> <a href="index.html">Home</a></li>
-                    <li> <a href="talk.html">Chat</a></li>
-                    <li> <a href="updates.html">Notifications</a></li>
-                    <li> <a href="about.html">About</a></li>
+                    <li> <NavLink href="index.html">Home</NavLink></li>
+                    <li> <NavLink href="talk.html">Chat</NavLink></li>
+                    <li> <NavLink href="updates.html">Notifications</NavLink></li>
+                    <li> <NavLink href="about.html">About</NavLink></li>
                 </menu>
             </nav>
             <hr />
@@ -29,7 +29,7 @@ export default function App() {
         <footer>
         <h3>Preston Miller</h3>
         <br/>
-        <a href="https://github.com/Preston-Miller/mycs260startup.git">GitHub</a>
+        <NavLink href="https://github.com/Preston-Miller/mycs260startup.git">GitHub</NavLink>
         </footer>
 
     </div>
