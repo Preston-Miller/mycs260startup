@@ -1,33 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './talk.css';
 
 export function Talk() {
+  const [messages, setMessages] = useState([]);
+
+  const [newMessage, setNewMessage] = useState('');
+
+  const handleSendMessage = () => {
+    if (newMessage.trim() !== '') {
+      setMessages([...messages, { username: 'Jenny', message: newMessage }]);
+      setNewMessage('');
+    }
+  };
+
   return (
     <main>
-    <div className="username-display">
-        <p>User: 
-        <span className="username"> Jenny</span>
+      <div className="username-display">
+        <p>
+          User:
+          <span className="username"> Jenny</span>
         </p>
-    </div>
-    <ul className="recieved-messages">
-        <li className="username">Angie</li>
-        <li className="message">This is a message sent from angie</li>
-        <br/>
-        <li className="username">Lizzy</li>
-        <li className="message">This is a message sent from lizzy</li>
-        <br/>
-        <li className="username">Becca</li>
-        <li className="message">This is a message sent from becca</li>
-    </ul>
-    <div className="type-message">
-        <label for="messageinput"></label>
-        <textarea id="messageinput" rows="*" placeholder="Type your message here.."></textarea>
-    </div>
-    <div className="send-message">
-        <label for="messagesend"></label>
-        <button id="messagesend" type="button">Send</button>
-    </div>
-    <hr />
-</main>
+      </div>
+
+      <ul className="recieved-messages">
+        {messages.map((msg, index) => (
+          <li key={index} className="message-item">
+            <span className="username">{msg.username}</span>
+            <p className="message">{msg.message}</p>
+          </li>
+        ))}
+      </ul>
+
+      <div className="type-message">
+        <textarea
+          id="messageinput"
+          rows="2"
+          placeholder="Type your message here.."
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+        ></textarea>
+      </div>
+
+      <div className="send-message">
+        <button id="messagesend" type="button" onClick={handleSendMessage}>
+          Send
+        </button>
+      </div>
+      <hr />
+    </main>
   );
 }
