@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './talk.css';
 
-export function Talk() {
+export function Talk({ userEmail }) {
   const [messages, setMessages] = useState([
     { username: 'Angie', message: 'This is a message sent from angie' },
     { username: 'Lizzy', message: 'This is a message sent from lizzy' },
@@ -12,7 +12,7 @@ export function Talk() {
 
   const handleSendMessage = () => {
     if (newMessage.trim() !== '') {
-      setMessages([...messages, { username: 'Jenny', message: newMessage }]);
+      setMessages([...messages, { username: userEmail, message: newMessage }]);
       setNewMessage('');
     }
   };
@@ -22,7 +22,7 @@ export function Talk() {
       <div className="username-display">
         <p>
           User:
-          <span className="username"> Jenny</span>
+          <span className="username"> {userEmail}</span>
         </p>
       </div>
 
