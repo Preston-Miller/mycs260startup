@@ -41,7 +41,8 @@ export default function App() {
               />
             }
           />
-          <Route path="/talk" element={<Talk />} />
+          {/* Pass userName (email) to Talk */}
+          <Route path="/talk" element={<Talk userEmail={userName} />} />
           <Route path="/updates" element={<Updates />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
