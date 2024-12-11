@@ -4,9 +4,9 @@ const app = express();
 
 // The scores and activity log are saved in memory and disappear whenever the service is restarted.
 let users = {};
-let activity_log = [];
+let activity_log = []; // Array to store activity log entries
 
-// The service port. In production the front-end code is statically hosted by the service on the same port.
+// The service port. In production, the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
 // JSON body parsing using built-in middleware
@@ -16,10 +16,53 @@ app.use(express.json());
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-app.get('*', (_req, res) => {
-  res.send({ msg: 'Startup service' });
+// CreateAuth a new user
+apiRouter.post('/auth/create', async (req, res) => {
+    const user = users[req.body.email];
+    if (user) {
+        res.status(409).send({ msg: 'Existing user' });
+    } else {
+        const user = { email: req.body.email, password: req.body.password, token: uuid.v4() };
+        users[user.email] = user;
+
+        // Add an activity log entry
+        activity_log.push({
+            type: 'created',
+            email: req.body.email,
+            timestamp: new Date().toISOString(),
+        });
+
+        res.send({ token: user.token });
+    }
 });
 
+// GetAuth login an existing user
+apiRouter.post('/auth/login', async (req, res) => {
+    const user = users[req.body.email];
+    if (user) {
+        if (req.body.password === user.password) {
+            user.token = uuid.v4();
+
+            // Add an activity log entry
+            activity_log.push({
+                type: 'logged_in',
+                email: req.body.email,
+                timestamp: new Date().toISOString(),
+            });
+
+            res.send({ token: user.token });
+            return;
+        }
+    }
+    res.status(401).send({ msg: 'Unauthorized' });
+});
+
+// Endpoint to get the activity log
+apiRouter.get('/activity', async (req, res) => {
+    res.send(activity_log); // Send the entire activity log
+});
+
+// Start the server
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+    console.log(`Listening on port ${port}`);
 });
