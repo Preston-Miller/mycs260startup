@@ -2,31 +2,63 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../app.css';
 
-export function Login() {
+export function Login({ userName, authState, onAuthChange }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     if (email.trim() === '' || password.trim() === '') {
       setError('Email and password cannot be empty.');
       return;
     }
 
-    setError('');
-    navigate('/talk');
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        onAuthChange(email, true); // Notify parent of successful login
+        navigate('/talk');
+      } else {
+        setError('Login failed.');
+      }
+    } catch (error) {
+      setError('Failed to connect to the server.');
+    }
   };
 
-  const handleCreateAccount = (e) => {
+  const handleCreateAccount = async (e) => {
     e.preventDefault();
     if (email.trim() === '' || password.trim() === '') {
-        setError('Email and password cannot be empty.');
-        return;
-      }
+      setError('Email and password cannot be empty.');
+      return;
+    }
 
-    navigate('/talk');
+    try {
+      const response = await fetch('/api/auth/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        onAuthChange(email, true); // Notify parent of successful account creation
+        navigate('/talk');
+      } else {
+        const data = await response.json();
+        setError(data.msg || 'Account creation failed.');
+      }
+    } catch (error) {
+      setError('Failed to connect to the server.');
+    }
   };
 
   return (
