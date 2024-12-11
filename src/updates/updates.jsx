@@ -5,26 +5,29 @@ export function Updates() {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const newUpdate = generateMockUpdate();
-      setNotifications((prevNotifications) => [newUpdate, ...prevNotifications.slice(0,4)]);
-    }, 5000);
+    const fetchUpdates = async () => {
+      try {
+        const response = await fetch('/api/activity'); // Ensure correct API URL
+        if (!response.ok) {
+          throw new Error('Failed to fetch updates');
+        }
+        const data = await response.json();
+        // Map activity log entries into readable notifications
+        const updates = data.slice(-5).reverse().map((entry) => {
+          return `${entry.email} ${entry.type === 'created' ? 'created a new account' : 'logged in'}`;
+        });
+        setNotifications(updates);
+      } catch (error) {
+        console.error('Error fetching updates:', error);
+      }
+    };
 
-    return () => clearInterval(interval);
+    // Fetch updates initially and every 5 seconds
+    fetchUpdates();
+    const interval = setInterval(fetchUpdates, 5000);
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
   }, []);
-
-  const generateMockUpdate = () => {
-    const mockUsers = ['Becca', 'Terry', 'Amy', 'Lizzy', 'Angie'];
-    const actions = [
-      'created a new account',
-      'is now active'
-    ];
-
-    const randomUser = mockUsers[Math.floor(Math.random() * mockUsers.length)];
-    const randomAction = actions[Math.floor(Math.random() * actions.length)];
-
-    return `${randomUser} ${randomAction}`;
-  };
 
   return (
     <main>
