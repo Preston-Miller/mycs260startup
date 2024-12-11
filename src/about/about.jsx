@@ -6,8 +6,13 @@ export function About(props) {
     const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
 
     React.useEffect(() => {
-        setQuote('Show me the code');
-        setQuoteAuthor('Linus Torvalds');
+        fetch('https://quote.cs260.click')
+      .then((response) => response.json())
+      .then((data) => {
+        setQuote(data.quote);
+        setQuoteAuthor(data.author);
+      })
+      .catch();
       }, []);
       
   return (
@@ -17,8 +22,8 @@ export function About(props) {
         </div>
         <div id="quote" className="quote-box bg-light text-dark">
             <h1>Quote of the Day</h1>
-            <p className="quote">Words are cheap. Show me the code.</p>
-            <p className="author">Linus Torvalds</p>
+            <p className="quote">{quote}</p>
+            <p className="author">{quoteAuthor}</p>
         </div>
         <div id="about-us">
             <h1>About Us</h1>
