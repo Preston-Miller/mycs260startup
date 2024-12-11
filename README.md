@@ -55,3 +55,13 @@ For this deliverable I used JavaScript and React so that the application complet
   - [x] **application logic** - Messages and updates are given ordered based upon time recieved.
 - [x] **Router** - Routing between all components. Specifically between login and talk.
 - [x] **Hooks** - I used UseState and UseEffect.
+
+# Service deliverable
+
+For this deliverable I added backend endpoints that creates accounts, logs in, and keeps track of an activity log.
+
+- [x] **Node.js/Express HTTP service** - done!
+- [x] **Static middleware for frontend** - done!
+- [x] **Calls to third party endpoints** - done!
+- [x] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for activity log.
+- [x] **Frontend calls service endpoints** - done!
