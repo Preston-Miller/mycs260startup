@@ -31,7 +31,7 @@ export function Updates() {
 
   return (
     <main>
-      <h1>Notifications</h1>
+      <h1>Updates</h1>
       <ul className="notifications">
         {notifications.map((notification, index) => (
           <li key={index} className="notification-item">
