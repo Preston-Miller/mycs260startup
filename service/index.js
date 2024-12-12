@@ -1,10 +1,7 @@
 const express = require('express');
+const { getUser, createUser, getUserByToken } = require('./database'); // Import from database.js
 const uuid = require('uuid');
 const app = express();
-
-// The scores and activity log are saved in memory and disappear whenever the service is restarted.
-let users = {};
-let activity_log = []; // Array to store activity log entries
 
 // The service port. In production, the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -21,48 +18,53 @@ app.use(`/api`, apiRouter);
 
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
-    const user = users[req.body.email];
-    if (user) {
-        res.status(409).send({ msg: 'Existing user' });
-    } else {
-        const user = { email: req.body.email, password: req.body.password, token: uuid.v4() };
-        users[user.email] = user;
-
-        // Add an activity log entry
-        activity_log.push({
-            type: 'created',
-            email: req.body.email,
-            timestamp: new Date().toISOString(),
-        });
-
-        res.send({ token: user.token });
+    try {
+        const existingUser = await getUser(req.body.email);
+        if (existingUser) {
+            res.status(409).send({ msg: 'Existing user' });
+        } else {
+            const user = await createUser(req.body.email, req.body.password);
+            res.send({ token: user.token });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ msg: 'Error creating user' });
     }
 });
 
 // GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
-    const user = users[req.body.email];
-    if (user) {
-        if (req.body.password === user.password) {
-            user.token = uuid.v4();
+    try {
+        const user = await getUser(req.body.email);
+        if (user) {
+            const validPassword = await bcrypt.compare(req.body.password, user.password);
+            if (validPassword) {
+                user.token = uuid.v4(); // Generate a new token for this session
+                await userCollection.updateOne(
+                    { email: user.email },
+                    { $set: { token: user.token } }
+                );
 
-            // Add an activity log entry
-            activity_log.push({
-                type: 'logged_in',
-                email: req.body.email,
-                timestamp: new Date().toISOString(),
-            });
-
-            res.send({ token: user.token });
-            return;
+                res.send({ token: user.token });
+                return;
+            }
         }
+        res.status(401).send({ msg: 'Unauthorized' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ msg: 'Error logging in' });
     }
-    res.status(401).send({ msg: 'Unauthorized' });
 });
 
 // Endpoint to get the activity log
 apiRouter.get('/activity', async (req, res) => {
-    res.send(activity_log); // Send the entire activity log
+    try {
+        const activities = await db.collection('activityLogs').find().sort({ timestamp: -1 }).toArray();
+        res.send(activities);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ msg: 'Error fetching activity log' });
+    }
 });
 
 // Start the server
