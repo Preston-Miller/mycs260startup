@@ -65,3 +65,14 @@ For this deliverable I added backend endpoints that creates accounts, logs in, a
 - [x] **Calls to third party endpoints** - done!
 - [x] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for activity log.
 - [x] **Frontend calls service endpoints** - done!
+
+# DB/Login deliverable
+
+For this deliverable I stored the accounts created and validated logged in users, which accounts were stored in the database.
+
+- [x] **MongoDB Atlas database created** - done!
+- [x] **Stores data in MongoDB** - done!
+- [x] **User registration** - Creates a new account in the database.
+- [x] **existing user** - Doesn't allow for same login credentials, data stays with the already existing user.
+- [x] **Use MongoDB to store credentials** - Stores both user email and password.
+- [ ] **Restricts functionality** - Does not restrict functionality.
