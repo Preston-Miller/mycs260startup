@@ -41,4 +41,5 @@ async function createUser(email, password) {
 module.exports = {
   getUser,
   createUser,
+  db
 };
